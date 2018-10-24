@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './nav/navbar.component';
 
 import { appRoutes } from '../routes';
-import { ErrorComponent } from './shared/index';
+import { ErrorComponent, DurationPipe } from './shared/index';
 
 import {
   EventsComponent,
@@ -18,7 +18,8 @@ import {
 import {
   EventDetailComponent,
   CreateSessionComponent,
-  SessionListComponent
+  SessionListComponent,
+  CollapsibleWellComponent
 } from './events/event-detail/index';
 
 import { AuthService } from './user/auth.service';
@@ -34,7 +35,9 @@ import { AuthService } from './user/auth.service';
     CreateEventComponent,
     ErrorComponent,
     CreateSessionComponent,
-    SessionListComponent
+    SessionListComponent,
+    CollapsibleWellComponent,
+    DurationPipe
   ],
   imports: [
     BrowserModule,

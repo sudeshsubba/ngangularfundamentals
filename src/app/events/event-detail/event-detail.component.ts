@@ -13,6 +13,8 @@ import { ToastrService } from '../../services/toastr.service';
 export class EventDetailComponent implements OnInit {
     event: any;
     addMode: boolean;
+    filterBy = 'all';
+    sortBy = 'votes';
 
     constructor(
         private eventService: EventService,
