@@ -7,15 +7,20 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './nav/navbar.component';
 
 import { appRoutes } from '../routes';
-import { ErrorComponent } from './shared/errors.component';
+import { ErrorComponent } from './shared/index';
 
 import {
   EventsComponent,
   EventThumbnailComponent,
-  EventDetailComponent,
   CreateEventComponent,
-  CreateSessionComponent
 } from './events/index';
+
+import {
+  EventDetailComponent,
+  CreateSessionComponent,
+  SessionListComponent
+} from './events/event-detail/index';
+
 import { AuthService } from './user/auth.service';
 
 
@@ -28,7 +33,8 @@ import { AuthService } from './user/auth.service';
     EventDetailComponent,
     CreateEventComponent,
     ErrorComponent,
-    CreateSessionComponent
+    CreateSessionComponent,
+    SessionListComponent
   ],
   imports: [
     BrowserModule,

@@ -39,22 +39,12 @@
       <em *ngIf="f.abstract.invalid && f.abstract.dirty
       && f.abstract?.errors.required">Required</em>
       <!-- <em *ngIf="f.abstract.invalid && f.abstract.dirty
-      && f.abstract?.errors.maxLength">Cannot exceed 10 chars</em> -->
+            && f.abstract?.errors.maxLength">Cannot exceed 10 chars</em> -->
       <em *ngIf="f.abstract.invalid && f.abstract.dirty 
       && f.abstract?.errors.restrictedWords">Restricted words found: {{abstract?.errors.restrictedWords}}</em>
       <textarea formControlName="abstract" id="abstract" rows=3 class="form-control" placeholder="abstract..."></textarea>
     </div>
-    <div class="form-group">
-        <label for="test" >Session Name:</label>
-        <em *ngIf="f.test.errors.maxLength">Required</em>
-        <input formControlName="test" id="test" type="text" class="form-control" placeholder="test name..." />
-      </div>
     <button type="submit" class="btn btn-primary" [disabled]="sessionForm.invalid">Save</button>
-    <button type="button" class="btn btn-default">Cancel</button>
-    <em>{{f.abstract.invalid}}
-       {{f.abstract.dirty}} 
-       {{f.abstract?.errors.maxLength}}
-       {{f.abstract?.errors.restrictedWords}}
-      </em>
+    <button type="button" class="btn btn-default" (click) = "onCancelClick()">Cancel</button>
   </form>
 </div>
