@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../services/event.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { ISession } from '../event.model';
-import { ToastrService } from '../../services/toastr.service';
 
 @Component({
     selector: 'app-event-detail',
@@ -18,8 +17,8 @@ export class EventDetailComponent implements OnInit {
 
     constructor(
         private eventService: EventService,
-        private activeRoute: ActivatedRoute,
-        private toastrService: ToastrService) {
+        private activeRoute: ActivatedRoute
+        ) {
     }
 
     ngOnInit() {
@@ -28,7 +27,12 @@ export class EventDetailComponent implements OnInit {
     }
 
     getEvent() {
-        this.event = this.eventService.getEvent(+ this.activeRoute.snapshot.paramMap.get('id'));
+        this.activeRoute.params.forEach(
+            (params: Params) => {
+                this.event = this.eventService.getEvent(+params['id']);
+            }
+        );
+        this.addMode = false;
     }
 
     addSession() {
@@ -41,7 +45,6 @@ export class EventDetailComponent implements OnInit {
         this.event.sessions.push(session);
         this.eventService.updateEvent(this.event);
         this.addMode = false;
-        this.toastrService.success('Session ' + session.name + ' saved');
     }
 
     cancelAddSession() {

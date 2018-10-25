@@ -7,7 +7,13 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './nav/navbar.component';
 
 import { appRoutes } from '../routes';
-import { ErrorComponent, DurationPipe } from './shared/index';
+import { ErrorComponent, DurationPipe, SimpleModalComponent, ModalTriggerDirective } from './shared/index';
+
+import {
+  TOASTR_TOKEN,
+  Toastr,
+  JQ_TOKEN
+} from './services/index';
 
 import {
   EventsComponent,
@@ -24,6 +30,8 @@ import {
 
 import { AuthService } from './user/auth.service';
 
+const toastr: Toastr = window['toastr'];
+const jQuery = window['$'];
 
 @NgModule({
   declarations: [
@@ -37,7 +45,9 @@ import { AuthService } from './user/auth.service';
     CreateSessionComponent,
     SessionListComponent,
     CollapsibleWellComponent,
-    DurationPipe
+    DurationPipe,
+    SimpleModalComponent,
+    ModalTriggerDirective
   ],
   imports: [
     BrowserModule,
@@ -49,6 +59,14 @@ import { AuthService } from './user/auth.service';
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
+    },
+    {
+      provide: TOASTR_TOKEN,
+      useValue: toastr
+    },
+    {
+      provide: JQ_TOKEN,
+      useValue: jQuery
     }
   ],
   bootstrap: [AppComponent]
